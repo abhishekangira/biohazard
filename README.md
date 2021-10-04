@@ -17,7 +17,7 @@
 
 ## Table Of Contents
 
-* [About the Project](#about-the-project)
+* [Screenshots](#screenshots)
 * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
@@ -25,7 +25,7 @@
 * [Authors](#authors)
 
 
-## About The Project
+## Screenshots
 
 ![screenshot - 1](screenshots/home.jpg)
 ![screenshot - 2](screenshots/home-2.jpg)
@@ -73,4 +73,4 @@ npm run android
 ```
 ## Authors
 
-* **Abhishek Angira** - *Frontend Engineer* - [Abhishek Angira](https://github.com/abhishekangira/)
+* **Abhishek Angira** - *Frontend Engineer*
