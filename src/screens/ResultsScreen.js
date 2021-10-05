@@ -31,7 +31,7 @@ export default function ResultsScreen({ navigation }) {
   const term = useSelector((state) => state.search.term);
 
   const [screenWidth, setScreenWidth] = useState(Dimensions.get("screen").width);
-  const [numColumns, setNumColumnse] = useState(isPortrait() ? 3 : 4);
+  const [numColumns, setNumColumnse] = useState(isPortrait() ? 3 : 5);
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
   const [moreImagesAvaliable, setMoreImagesAvaliable] = useState(true);
@@ -45,7 +45,7 @@ export default function ResultsScreen({ navigation }) {
   useEffect(() => {
     navigation.setOptions({ title: term });
     const sub = Dimensions.addEventListener("change", () => {
-      setNumColumnse(isPortrait() ? 3 : 4);
+      setNumColumnse(isPortrait() ? 3 : 5);
       setScreenWidth(Dimensions.get("screen").width);
     });
     return () => sub.remove();

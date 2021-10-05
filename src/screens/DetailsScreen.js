@@ -16,7 +16,7 @@ export default function DetailsScreen({ route, navigation }) {
   const [showDetails, setShowDetails] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // console.log(item);
+  console.log(item);
 
   // opacity will be used as the value for opacity. Initial Value: 0
   const opacity = useRef(new Animated.Value(0)).current;
@@ -55,6 +55,9 @@ export default function DetailsScreen({ route, navigation }) {
       </Pressable>
 
       <Animated.View style={[styles.details, { opacity }]}>
+        <Text style={styles.resolution}>
+          {item.imageWidth}x{item.imageHeight}
+        </Text>
         <Text style={styles.tags}>{item.tags}</Text>
         <Text style={styles.uploader}>{item.user}</Text>
       </Animated.View>
@@ -85,6 +88,10 @@ const styles = StyleSheet.create({
     padding: 10,
     position: "absolute",
     bottom: 0,
+  },
+  resolution: {
+    color: "#888",
+    fontWeight: "bold",
   },
   tags: {
     color: "#aaa",
