@@ -5,12 +5,10 @@ import {
   Text,
   View,
   ActivityIndicator,
-  TextInput,
   StyleSheet,
   Image,
   Pressable,
   Dimensions,
-  StatusBar,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon5 from "react-native-vector-icons/FontAwesome5";
@@ -57,9 +55,17 @@ export default function ResultsScreen({ navigation }) {
       .get(`https://pixabay.com/api/?key=${PIXBAY_API_KEY}&q=${term}&page=${page}`)
       .then((res) => {
         setImages([...images, ...res.data.hits]);
+        // console.log(res.data.hits);
         if (res.data.hits.length === 0 || res.data.hits.length < 20) setMoreImagesAvaliable(false);
         if (page === 1 && res.data.hits.length === 0) setNoResults(true);
         setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(e);
+        console.log(e.response.status);
+        console.log(e.response.data);
+        setIsLoading(false);
+        setMoreImagesAvaliable(false);
       });
   };
 
@@ -93,7 +99,7 @@ export default function ResultsScreen({ navigation }) {
     ) : noResults ? (
       <Text style={styles.footer}>No search results</Text>
     ) : (
-      <Text style={styles.footer}>That's all folks</Text>
+      <Text style={styles.footer}>That's all folks!</Text>
     );
   };
 
@@ -118,12 +124,13 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     backgroundColor: "#333",
+    paddingBottom: 2,
   },
   footer: {
     fontSize: 16,
     color: "palevioletred",
-    marginTop: 10,
-    marginLeft: 10,
+    padding: 10,
+    alignSelf: "center",
   },
   imageContainer: {
     margin: 1,
